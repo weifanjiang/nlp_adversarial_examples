@@ -30,6 +30,8 @@ python train_model.py
 ./download_googlm.sh
 ```
 
+**Weifan:** Note: to use CPU, after running this step, in file `goog_lm`, replace all occurences `"/device:GPU:0"` by `"/device:CPU:0"`; to make the script run on local computer instead of GPU.
+
 7) Pre-compute the distances between embeddings of different words (required to do the attack) and save the distance matrix.
 
 ```
