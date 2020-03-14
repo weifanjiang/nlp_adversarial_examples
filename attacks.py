@@ -70,7 +70,6 @@ class EntailmentAttack(object):
             pop_ranks = np.argsort(pop_scores)[::-1]
             top_attack = pop_ranks[0]
             if np.argmax(pop_preds[top_attack, :]) == target:
-                print("Finished attack in {} iterations".format(iter_idx))
                 return x1_orig, pop[top_attack]
             print(iter_idx, ' : ', np.max(pop_scores))
             logits = np.exp(pop_scores / self.temp)
@@ -242,6 +241,7 @@ class GeneticAtack(object):
             select_probs = logits / np.sum(logits)
 
             if np.argmax(pop_preds[top_attack, :]) == target:
+                print("Finished genetic attack in {} iterations".format(i))
                 return pop[top_attack]
             elite = [pop[top_attack]]  # elite
             # print(select_probs.shape)
