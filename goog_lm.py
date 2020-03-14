@@ -23,9 +23,10 @@ class LM(object):
         self.NUM_TIMESTEPS = 1
         self.MAX_WORD_LEN = 50
 
+        print('LM start vocab loading ')
         self.vocab = lm_data_utils.CharsVocabulary(self.VOCAB_PATH, self.MAX_WORD_LEN)
         print('LM vocab loading done')
-        with tf.device("/gpu:1"):
+        with tf.device("/job:localhost/replica:0/task:0/device:CPU:0"):
             self.graph = tf.Graph()
             self.sess = tf.Session(graph=self.graph)
         with self.graph.as_default():
